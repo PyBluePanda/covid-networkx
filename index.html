@@ -9,6 +9,12 @@
       content="width=device-width, initial-scale=1, shrink-to-fit=no"
     />
     <title>Stlite App</title>
+    <style>
+        :root {
+          --primary-color: #35aace;
+          --background-color: #0e1117;
+        }
+    </style>
     <link
       rel="stylesheet"
       href="https://cdn.jsdelivr.net/npm/@stlite/mountable@0.63.1/build/stlite.css"
@@ -33,24 +39,10 @@ import streamlit as st
 from streamlit_extras.stylable_container import stylable_container
 from streamlit_extras.buy_me_a_coffee import button
 import warnings
-import ast
 
 from model import create_interactive_plot, create_results_plot
 
 warnings.filterwarnings("ignore")
-
-config_toml_content = """
-{
-    "theme": {
-        "base": "dark",
-        "primaryColor": "#35aace"
-    }
-}
-""" 
-config = ast.literal_eval(config_toml_content)
-
-for key, value in config.get("theme", {}).items():
-    st.set_option(f"theme.{key}", value)
 
 st.set_page_config(layout="wide",
     page_title="Covid - x - NetworkX", page_icon=":microbe:", 
