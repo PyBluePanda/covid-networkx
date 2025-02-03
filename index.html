@@ -22,7 +22,7 @@
 
       stlite.mount(
         {
-        requirements: ["streamlit", "streamlit_extras", "networkx", "numpy", "pandas", "plotly", "toml", "stlite"], // Packages to install, provided as a list
+        requirements: ["streamlit", "streamlit_extras", "networkx", "numpy", "pandas", "plotly"], // Packages to install, provided as a list
         entrypoint: "app.py", // Which page to start on - essential even if only providing a single page
         // We then pass in a dictionary of files, with the keys being the filenames and the values being code
         // The name of one file must match the file given as the entrypoint
@@ -32,20 +32,24 @@
 import streamlit as st
 from streamlit_extras.stylable_container import stylable_container
 from streamlit_extras.buy_me_a_coffee import button
-import warnings 
-import toml
-import stlite
+import warnings
+import ast
 
 from model import create_interactive_plot, create_results_plot
 
-# Load config.toml using stlite.get_file_contents
-config_toml_content = stlite.get_file_contents("config.toml")
-config = toml.loads(config_toml_content)
+warnings.filterwarnings("ignore")
+
+config_toml_content = """
+{
+    "theme": {
+        "base": "dark",
+        "primaryColor": "#35aace"
+    }
+}
+config = ast.literal_eval(config_toml_content)
 
 for key, value in config.get("theme", {}).items():
     st.set_option(f"theme.{key}", value)
-
-warnings.filterwarnings("ignore")
 
 st.set_page_config(layout="wide",
     page_title="Covid - x - NetworkX", page_icon=":microbe:", 
@@ -445,13 +449,13 @@ def create_results_plot(state_counts):
     )
 
     return fig_time_series
-`,
-//"__init__.py":` `
-"config.toml":`
-[theme]
-base="dark"
-primaryColor="#35aace"
 `
+//"__init__.py":` `
+// "config.toml":`
+// [theme]
+// base="dark"
+// primaryColor="#35aace"
+// `
 }
 // The code after this point is the same for every stlite app you create
         },
