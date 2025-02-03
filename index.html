@@ -46,6 +46,7 @@ config_toml_content = """
         "primaryColor": "#35aace"
     }
 }
+""" 
 config = ast.literal_eval(config_toml_content)
 
 for key, value in config.get("theme", {}).items():
