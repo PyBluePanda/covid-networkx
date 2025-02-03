@@ -22,7 +22,7 @@
 
       stlite.mount(
         {
-        requirements: ["streamlit", "streamlit_extras", "networkx", "numpy", "pandas", "plotly"], // Packages to install, provided as a list
+        requirements: ["streamlit", "streamlit_extras", "networkx", "numpy", "pandas", "plotly", "toml", "stlite"], // Packages to install, provided as a list
         entrypoint: "app.py", // Which page to start on - essential even if only providing a single page
         // We then pass in a dictionary of files, with the keys being the filenames and the values being code
         // The name of one file must match the file given as the entrypoint
@@ -44,7 +44,6 @@ config = toml.loads(config_toml_content)
 
 for key, value in config.get("theme", {}).items():
     st.set_option(f"theme.{key}", value)
-
 
 warnings.filterwarnings("ignore")
 
