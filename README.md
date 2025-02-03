@@ -1,4 +1,7 @@
 # covid-networkx
+
+https://pybluepanda.github.io/covid-networkx/
+
 ## NetworkX COVID SEAIR simulation model
 
 - S (Susceptible): Healthy, but can become exposed.  
