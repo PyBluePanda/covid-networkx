@@ -34,11 +34,16 @@ from streamlit_extras.stylable_container import stylable_container
 from streamlit_extras.buy_me_a_coffee import button
 import warnings 
 import toml
+import stlite
 
 from model import create_interactive_plot, create_results_plot
 
-st.set_option("theme.base", "dark")
-st.set_option("theme.primaryColor", "#35aace")
+# Load config.toml using stlite.get_file_contents
+config_toml_content = stlite.get_file_contents("config.toml")
+config = toml.loads(config_toml_content)
+
+for key, value in config.get("theme", {}).items():
+    st.set_option(f"theme.{key}", value)
 
 
 warnings.filterwarnings("ignore")
@@ -443,6 +448,11 @@ def create_results_plot(state_counts):
     return fig_time_series
 `,
 //"__init__.py":` `
+"config.toml":`
+[theme]
+base="dark"
+primaryColor="#35aace"
+`
 }
 // The code after this point is the same for every stlite app you create
         },
