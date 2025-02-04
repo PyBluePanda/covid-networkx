@@ -1,6 +1,7 @@
 # covid-networkx
 
-https://pybluepanda.github.io/covid-networkx/
+GitHub Pages: https://pybluepanda.github.io/covid-networkx/
+Streamlit Community Cloud: https://covid-networkx.streamlit.app/
 
 ## NetworkX COVID SEAIR simulation model
 
