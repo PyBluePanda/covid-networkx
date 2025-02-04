@@ -133,10 +133,10 @@ with stylable_container(
     st.markdown('''
     :blue[S] :orange[E] A :red[I] :green[R] - 
     :blue[Susceptible] /
-    :orange[Exposed (latent) phase] /
+    :orange[Exposed] /
     Asymptomatic spreaders / 
-    :red[Infected (symptomatic) individuals] /
-    :green[Recovered (immunity gained)]
+    :red[Infected (symptomatic)] /
+    :green[Recovered]
     ''')
         
 # ==== generate plot ====    
